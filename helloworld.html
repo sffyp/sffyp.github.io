@@ -6,7 +6,6 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
 <title>sffy|hello world</title>
-	<meta http-equiv="content-type" content="text/html;charset=utf-8">
 <meta http-equiv=Content-Type content="text/html; charset=gb2312">
 <meta name=ProgId content=Word.Document>
 <meta name=Generator content="Microsoft Word 15">
@@ -1747,10 +1746,51 @@ end-<o:p></o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:18.0pt;mso-bidi-font-size:11.0pt;
 line-height:115%'>评论<span lang=EN-US>:<o:p></o:p></span></span></p>
+</style>		
+		<script type="text/javascript">			
+			function  add()
+			{
+				var content=$("te").value;
+				content=trim(content);
+				if(content.length<1)
+				{
+					alert("请输入内容");
+					return;
+				}
+				$("te").value="";
+				var myDate = new Date();
+				var year=myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+				var month=myDate.getMonth();       //获取当前月份(0-11,0代表1月)
+				var day=myDate.getDate();  
+				var hour=myDate.getHours();       //获取当前小时数(0-23)
+                var second=myDate.getMinutes();     //获取当前分钟数(0-59)
+				var minute=myDate.getSeconds();
+				var timeNow=year+"/"+month+"/"+day+" --"+hour+":"+second+":"+minute;				
+				var  w="<pre  style='display:inline;'>"+timeNow+"<br/>"+content+"</pre>";						
+				var newDiv=document.createElement("div");
+				newDiv.className="personal";
+				newDiv.innerHTML=w;
+				var s=$("show");
+				$("show").appendChild(newDiv);
+				s.scrollTop = s.scrollHeight;//自动将滚动条拉到底部
+			}
+		function $(id){
+			return document.getElementById(id);
+		}
+		function trim(str){ //删除左右两端的空格
+　　     return str.replace(/(^\s*)|(\s*$)/g, "");
+　　 }
+		</script>
 
-<p class=MsoNormal align=center style='text-align:center'><span
-style='font-size:18.0pt;mso-bidi-font-size:11.0pt;line-height:115%'>暂时不能用<span
-lang=EN-US>~<o:p></o:p></span></span></p>
+		<div id="talk">
+			<div id="show"></div>
+			<div id="write">
+						<textArea   id="te" style="margin: auto auto; width:100%;height:79%;"></textArea>
+						<input type="button" value="发布评论" class="btn" onclick="add()">				
+			</div>
+		</div>
+
+
 
 <p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
 style='font-size:18.0pt;mso-bidi-font-size:11.0pt;line-height:115%'><a
